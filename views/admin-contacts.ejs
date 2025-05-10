@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Contactos | StyleHome</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Style<span>Home</span></h1>
+                <p>Panel de Administración</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Volver al sitio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="admin-section">
+        <div class="container">
+            <h2>Contactos Registrados</h2>
+            
+            <% if (contacts.length > 0) { %>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Comentario</th>
+                            <th>IP</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% contacts.forEach(contact => { %>
+                        <tr>
+                            <td><%= contact.id %></td>
+                            <td><%= contact.name %></td>
+                            <td><%= contact.email %></td>
+                            <td><%= contact.comment %></td>
+                            <td><%= contact.ip %></td>
+                            <td><%= new Date(contact.created_at).toLocaleString() %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No hay contactos registrados.</p>
+            <% } %>
+        </div>
+    </section>
+</body>
+</html>
